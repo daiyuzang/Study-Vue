@@ -15,7 +15,7 @@
 		<h2 v-if="name.indexOf('Jack')>=0">Name：{{ name }}</h2>
 
 
-		<h2 v-show="age >= 23">Age：{{ age }}</h2>
+		<h2 v-if="age >= 23">Age：{{ age }}</h2>
 		<h2 v-else>Name：{{name}}</h2>
 		<h2>---------------------------------</h2>
 		<h2 v-if="name.indexOf('J')>=0">Name：{{ name }}</h2>
@@ -28,7 +28,7 @@
 			data:{
 				message : "Hello Vue.js!",
 				yes:true,
-				age:44,
+				age:4,
 				name:"hhJe",
 				sex:"nan"
 			}
