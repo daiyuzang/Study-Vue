@@ -20,17 +20,51 @@
 		<h2>---------------------------------</h2>
 		<h2 v-if="name.indexOf('J')>=0">Name：{{ name }}</h2>
 		<h2 v-else>Sex：{{sex}}</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>性别</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="person in people">
+					<td>{{person.name}}</td>
+					<td>{{person.age}}</td>
+					<td>{{person.sex}}</td>
+				</tr>
+			</tbody>
+		</table>
+		
 	</div>
 	<script type="text/javascript" src="vue.js"></script>
 	<script type="text/javascript">
-		new Vue({
+		var vm = new Vue({
 			el: "#app",
 			data:{
 				message : "Hello Vue.js!",
 				yes:true,
 				age:4,
 				name:"hhJe",
-				sex:"nan"
+				sex:"nan",
+				people:[{
+					name:'Jack',
+					age:32,
+					sex:'male'
+				},{
+					name:'Marry',
+					age:22,
+					sex:'female'
+				},{
+					name:'Tracy',
+					age:33,
+					sex:'male'
+				},{
+					name:'Chris',
+					age:44,
+					sex:'male'
+				}]
 			}
 		});
 	</script>
