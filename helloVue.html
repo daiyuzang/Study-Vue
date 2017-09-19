@@ -2,6 +2,11 @@
 <html>
 <head>
 	<title>Hello Vue.js</title>
+	<style type="text/css">
+		.active{
+			color: red;
+		}
+	</style>
 </head>
 <body>
 	<div id="app">
@@ -36,7 +41,11 @@
 				</tr>
 			</tbody>
 		</table>
-		
+		<ul>
+			<li v-for="n in pageCount"><!-- v-bind后面时任意attribute (n是从1开始遍历的)-->
+				<a href="javascript:void(0)" v-bind:class="activeNumber === n ? 'active' : ''">{{n}}</a>
+			</li>
+		</ul>
 	</div>
 	<script type="text/javascript" src="vue.js"></script>
 	<script type="text/javascript">
@@ -64,7 +73,9 @@
 					name:'Chris',
 					age:44,
 					sex:'male'
-				}]
+				}],
+				pageCount:10,
+				activeNumber:1
 			}
 		});
 	</script>
