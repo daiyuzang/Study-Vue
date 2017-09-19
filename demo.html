@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo</title>
+	<link rel="stylesheet" type="text/css" href="demo.css">
+</head>
+<body>
+	<div id="app">
+		<fieldset>
+			<legend>Create New Person</legend>
+			<div class="form-group">
+				<label>Name:</label>
+				<input type="text" v-model="Person.name">
+			</div>
+			<div class="form-group">
+				<label>Age:</label>
+				<input type="text" v-model="Person.age">
+			</div>
+			<div class="form-group">
+				<label>Gender:</label>
+				<select v-model="Person.gender">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label></label>
+				<button v-on:click="createPerson">Create</button>
+			</div>
+		</fieldset>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Gender</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="Person,item in People">
+					<td>{{Person.name}}</td>
+					<td>{{Person.age}}</td>
+					<td>{{Person.gender}}</td>
+					<td><button v-on:click="deletePerson(item)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				Person:{
+					name:'',
+					age:0,
+					gender:'Male'
+				},
+				People:[{
+					name:'Jack',
+					age:32,
+					gender:'Male'
+				},{
+					name:'Marry',
+					age:22,
+					gender:'Female'
+				},{
+					name:'Mickel',
+					age:11,
+					gender:'Male'
+				},{
+					name:'Tracy',
+					age:42,
+					gender:'Female'
+				}]
+			},
+			methods:{
+				createPerson:function(){
+					this.People.push(this.Person);
+					this.Person = {name:'',age:0,gender:'Male'};
+				},
+				deletePerson:function(item){
+					this.People.splice(item,1);
+				}
+			}
+		})
+	</script>
+</body>
+</html>
